@@ -1,0 +1,119 @@
+:root{
+  --size:400px;
+  --top:150px;
+  --left:140px;
+  --border:60px;
+
+  --n2:1.5;
+  --n3:1.9;
+}
+
+.css-pyramid {
+  width: 760px;
+  height: 760px;
+  overflow: hidden;
+  background: #ece0fa;
+  transform: translate(-19%, -27%) scale(0.4);
+}
+
+.item {
+  margin: 0 auto;
+  position: relative;
+  perspective: 300px;
+  perspective-origin: 50% 40%;
+}
+
+.item .back{
+    animation-delay: -2.5s;
+}
+.item .right{
+    animation-delay: -1.25s;
+}
+.item .left{
+    animation-delay: -3.75s;
+}
+
+.side {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: var(--border) solid transparent;
+    border-right: var(--border) solid transparent;
+    border-bottom: calc(var(--border) * 2) solid #4e00b3;
+    transform-origin: 50% 0%;
+    animation: spin 5s infinite linear;
+  }
+
+.item-1 {
+  width: var(--size);
+  height: var(--size);
+  z-index: 3;
+}
+
+.item-1 .side{
+  left: var(--left);
+  top: var(--top);
+  border-left-width: var(--border);
+  border-right-width: var(--border);
+  border-bottom: calc(var(--border) * 2) solid rgb(219, 184, 9);
+  border-image: url(./img/t1.png) 72% 36.5% round;
+}
+
+.item-2{
+  width: calc(var(--size) * var(--n2)) ;
+  height: calc(var(--size) * var(--n2)) ;
+  z-index: 2;
+  transform: translateY(-474px);
+}
+
+.item-2 .side{
+  left: calc(var(--left) * var(--n2)) ;
+  top: calc(var(--top) * var(--n2)) ;
+  border-left-width: calc(var(--border) * var(--n2));
+  border-right-width: calc(var(--border) * var(--n2));
+  border-bottom: calc(var(--border) * var(--n2) * 2) solid rgb(12, 168, 111);
+  border-image: url(./img/t2.png) 72% 36.5% round;
+}
+
+.item-3 {
+  width: calc(var(--size) * var(--n3)) ;
+  height: calc(var(--size) * var(--n3)) ;
+  z-index: 1;
+  transform: translateY(-1134px);
+}
+
+.item-3 .side{
+  left: calc(var(--left) * var(--n3)) ;
+  top: calc(var(--top) * var(--n3)) ;
+  border-left-width: calc(var(--border) * var(--n3));
+  border-right-width: calc(var(--border) * var(--n3));
+  border-bottom: calc(var(--border) * var(--n3) * 2) solid rgb(12, 168, 111);
+  border-image: url(./img/t3.png) 72% 36.5% round;
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg) rotateX(30deg);
+  }
+  25% {
+    transform: rotateY(90deg) rotateX(30deg);
+    opacity: 1;
+  }
+  25.1% {
+    opacity: 0;
+  }
+  50% {
+    transform: rotateY(180deg) rotateX(30deg);
+  }
+  74.9% {
+    opacity: 0;
+  }
+  75% {
+    transform: rotateY(270deg) rotateX(30deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(30deg);
+  }
+}
